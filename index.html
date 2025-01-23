@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatile" content="ie=edge">
+        <title>Client</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                font-weight: 200;
+                color:black;
+                background-color: white;
+            }
+
+            #main {
+                width: 100%;
+                padding: 20px;
+                text-align: center;
+            }
+
+            h1 {
+                margin-top: 50px;
+                margin-bottom: 10px;
+            }
+
+            #form {
+                display:list-item;
+                text-align: center;
+            }
+
+            input {
+                width: 90%;
+                outline: none;
+                margin: 10px 5%;
+                padding: 15px 10px;
+                font-size: 14px;
+                border: 2px solid silver;
+                border-radius: 5px;
+            }
+
+            input:focus {
+                border-color: #db5d5d;
+            }
+
+            button {
+                border: 0;
+                border-radius: 5px;
+                margin-top: 50px;
+                height: 60px;
+                width: 200px;
+                font-size: 20px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 500ms ease;
+                color: black;
+                background: rgba(233, 233, 233, 0.849);
+            }
+            
+            button:hover {
+                background:rgb(196, 196, 196);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+                <h1>Добавление клиента</h1>
+                <form id="form">
+                    <input type="text" placeholder="Сайт клиента" id="client_sait">
+                    <input type="text" placeholder="Дата" id="date">
+                    <input type="text" placeholder="Имя клиента" id="client_name">
+                    <input type="text" placeholder="ТГ клиента" id="client_tg">
+                    <input type="text" placeholder="Сейл" id="sail_name">
+                    <div id="error"></div>
+                    <button id="submit">Отправить</button>
+                </form>
+                <script>
+                    let tf = window.Telegram.WebApp;
+                    let submit = document.getElementById("submit");
+                    tg.expand();
+
+                    submit.addEventListener("click", () =>{
+                        let client_sait = document.getElementById("client_sait").value;
+                        let date = document.getElementById("date").value;
+                        let client_name = document.getElementById("client_name").value;
+                        let client_tg = document.getElementById("client_tg").value;
+                        let sail_name = document.getElementById("sail_name").value;
+                        if(client_name.lenght <5) {
+
+                        }
+
+                        let data = {
+                            client_name: client_name,
+                            date: date,
+                            client_name:client_name,
+                            client_tg:client_tg,
+                            client_name:client_name
+                        }
+                        td.sendData(JSON.stringify(data))
+
+
+                        tg.close();
+                    })
+                </script>
+            </div>
+    </body>
+</html>
