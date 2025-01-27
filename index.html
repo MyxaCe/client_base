@@ -73,13 +73,23 @@
         <div id="main">
                 <h1>Добавление клиента</h1>
                 <form id="form">
-                    <input type="text" placeholder="Сайт клиента" id="client_sait">
-                    <input type="text" placeholder="Дата" id="date">
-                    <input type="text" placeholder="Имя клиента" id="client_name">
-                    <input type="text" placeholder="ТГ клиента" id="client_tg">
-                    <input type="text" placeholder="Сейл" id="sail_name">
-                    <div id="error"></div>
-                    <button id="submit">Отправить</button>
+                    <label for="client_sait">Сайт клиента:</label>
+                    <input type="text" id="client_sait" name="client_sait"><br>
+
+                    <label for="date">Дата:</label>
+                    <input type="date" id="date" name="date"><br>
+
+                    <label for="client_name">Имя клиента:</label>
+                    <input type="text" id="client_name" name="client_name"><br>
+
+                    <label for="client_tg">Telegram клиента:</label>
+                    <input type="text" id="client_tg" name="client_tg"><br>
+
+                    <label for="sail_name">Название продажи:</label>
+                    <input type="text" id="sail_name" name="sail_name"><br>
+
+                    <button type="button" id="submit">Submit</button>
+                    <div id="error" style="color: red;"></div>
                 </form>
         </div>
                 <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
