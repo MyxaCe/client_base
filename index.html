@@ -81,7 +81,7 @@
                     <div id="error"></div>
                     <button id="submit">Отправить</button>
                 </form>
-            </div>
+        </div>
                 <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
                 <script>
                     let tg = window.Telegram.WebApp;
@@ -96,11 +96,48 @@
                         let client_tg = document.getElementById("client_tg").value;
                         let sail_name = document.getElementById("sail_name").value;
                 
+                        if (client_sait.length < 5) {
+                            document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
+                        if (date.length < 5) {
+                            document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
                         if (client_name.length < 5) {
                             document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
                             return; // не продолжаем выполнение, если условие истинно
                         }
+                        if (client_tg.length < 5) {
+                            document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
+                        if (sail_name.length < 5) {
+                            document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
+                        if (!date) {
+                            const today = new Date();
+                            const year = today.getFullYear();
+                            const month = String(today.getMonth() + 1).padStart(2, '0');
+                            const day = String(today.getDate()).padStart(2, '0');
+                            date = `${year}-${month}-${day}`;
+                            document.getElementById("date").value = date;
+                        }
                 
+                        // Проверка формата даты
+                        const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+                        if (!datePattern.test(date)) {
+                            document.getElementById("error").innerText = "Дата должна быть в формате YYYY-MM-DD.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
+                
+                        // Дополнительная проверка на корректность даты
+                        const parsedDate = new Date(date);
+                        if (isNaN(parsedDate.getTime())) {
+                            document.getElementById("error").innerText = "Некорректная дата.";
+                            return; // не продолжаем выполнение, если условие истинно
+                        }
                         let data = {
                             client_sait: client_sait,
                             date: date,
