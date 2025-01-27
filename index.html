@@ -97,7 +97,14 @@
                     let tg = window.Telegram.WebApp;
                     let submit = document.getElementById("submit");
                     tg.expand();
-                
+                        
+                    window.addEventListener('load', () => {
+                        const today = new Date();
+                        const year = today.getFullYear();
+                        const month = String(today.getMonth() + 1).padStart(2, '0');
+                        const day = String(today.getDate()).padStart(2, '0');
+                        document.getElementById("date").value = `${year}-${month}-${day}`;
+                    });
                     submit.addEventListener("click", (event) => {
                         event.preventDefault(); // предотвращаем отправку формы
                         let client_sait = document.getElementById("client_sait").value;
