@@ -170,6 +170,17 @@
                             handleSubmit(event);
                         }
                     });
+
+                    // Обработчик для правого клика мыши и вставки текста
+                    document.addEventListener('contextmenu', (event) => {
+                        event.preventDefault();
+                    });
+
+                    document.addEventListener('paste', (event) => {
+                        event.preventDefault();
+                        const text = event.clipboardData.getData('text');
+                        document.activeElement.value += text;
+                    });
                 </script>
     </body>
 </html>
