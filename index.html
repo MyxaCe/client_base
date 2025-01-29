@@ -101,21 +101,20 @@
                     });
 
                     submit.addEventListener("click", (event) => {
-                        event.preventDefault(); // предотвращаем отправку формы
+                        event.preventDefault();
                         let client_sait = document.getElementById("client_sait").value;
                         let date = document.getElementById("date").value;
                         let client_name = document.getElementById("client_name").value;
                         let client_tg = document.getElementById("client_tg").value;
                         let sail_name = document.getElementById("sail_name").value;
                         
-                        // Удаление пробелов и символа +
                         client_tg = client_tg.replace(/\s+/g, '').replace(/\+/g, '');
 
                         const tgPattern = /^(https:\/\/t\.me\/[a-zA-Z0-9_]+|7\d{10}|Скрыт)$/;
 
                         if (client_sait.length < 5) {
                             document.getElementById("error").innerText = "Сайт клиента должен содержать минимум 5 символов.";
-                            return; // не продолжаем выполнение, если условие истинно
+                            return;
                         }
 
                         if (!date) {
@@ -130,18 +129,18 @@
                         const datePattern = /^\d{4}-\d{2}-\d{2}$/;
                         if (!datePattern.test(date)) {
                             document.getElementById("error").innerText = "Дата должна быть в формате YYYY-MM-DD.";
-                            return; // не продолжаем выполнение, если условие истинно
+                            return;
                         }
                 
                         const parsedDate = new Date(date);
                         if (isNaN(parsedDate.getTime())) {
                             document.getElementById("error").innerText = "Некорректная дата.";
-                            return; // не продолжаем выполнение, если условие истинно
+                            return;
                         }
                         
                         if (client_name.length < 5) {
                             document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
-                            return; // не продолжаем выполнение, если условие истинно
+                            return;
                         }
 
                         if (!tgPattern.test(client_tg)) {
@@ -155,6 +154,7 @@
                         }
 
                         let data = {
+                            action: "add_client", // добавляем переменную action
                             client_sait: client_sait,
                             date: date,
                             client_name: client_name,
