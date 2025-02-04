@@ -79,9 +79,6 @@
                     <label for="client_tg">Telegram клиента:</label>
                     <input type="text" id="client_tg" name="client_tg" autocomplete="off"><br>
 
-                    <label for="sail_name">Сейл:</label>
-                    <input type="text" id="sail_name" name="sail_name" autocomplete="off"><br>
-
                     <div id="error" style="color: red;"></div>
                     <button type="button" id="submit">Submit</button>
                 </form>
@@ -159,7 +156,6 @@
                             date: date,
                             client_name: client_name,
                             client_tg: client_tg,
-                            sail_name: sail_name
                         };
                 
                         tg.sendData(JSON.stringify(data)); // исправлено: используется правильная переменная
