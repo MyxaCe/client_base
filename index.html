@@ -145,11 +145,6 @@
                         return; // не продолжаем выполнение, если условие истинно
                         }
 
-                        if (sail_name.length < 5) {
-                            document.getElementById("error").innerText = "Название продажи должно содержать минимум 5 символов.";
-                            return; // не продолжаем выполнение, если условие истинно
-                        }
-
                         let data = {
                             action: "add_client", // добавляем переменную action
                             client_sait: client_sait,
