@@ -99,16 +99,16 @@
 
                     submit.addEventListener("click", (event) => {
                         event.preventDefault();
-                        let site_link = document.getElementById("client_sait").value;
+                        let site_link = document.getElementById("site_link").value;
                         let date = document.getElementById("date").value;
-                        let name_client = document.getElementById("client_name").value;
-                        let contact_client = document.getElementById("client_tg").value;
+                        let name_client = document.getElementById("name_client").value;
+                        let contact_client = document.getElementById("contact_client").value;
                         
-                        client_tg = client_tg.replace(/\s+/g, '').replace(/\+/g, '');
+                        contact_client = contact_client.replace(/\s+/g, '').replace(/\+/g, '');
 
                         const tgPattern = /^(https:\/\/t\.me\/[a-zA-Z0-9_]+|7\d{10}|Скрыт)$/;
 
-                        if (client_sait.length < 5) {
+                        if (site_link.length < 5) {
                             document.getElementById("error").innerText = "Сайт клиента должен содержать минимум 5 символов.";
                             return;
                         }
@@ -134,26 +134,27 @@
                             return;
                         }
                         
-                        if (client_name.length < 5) {
+                        if (name_client.length < 5) {
                             document.getElementById("error").innerText = "Имя клиента должно содержать минимум 5 символов.";
                             return;
                         }
 
-                        if (!tgPattern.test(client_tg)) {
-                        document.getElementById("error").innerText = "Telegram клиента должен быть в формате https://t.me/username, номер телефона в формате 79000000000 или 'Скрыт'.";
-                        return; // не продолжаем выполнение, если условие истинно
+                        if (!tgPattern.test(contact_client)) {
+                            document.getElementById("error").innerText = "Telegram клиента должен быть в формате https://t.me/username, номер телефона в формате 79000000000 или 'Скрыт'.";
+                            return;
                         }
 
                         let data = {
-                            action: "add_client", // добавляем переменную action
+                            action: "add_client",
                             site_link: site_link,
                             date: date,
                             name_client: name_client,
                             contact_client: contact_client,
                         };
-                
-                        tg.sendData(JSON.stringify(data)); // исправлено: используется правильная переменная
-                        tg.close(); // закрываем веб-приложение
+                        
+                        console.log("Sending data:", data); // Добавим логирование для отладки
+                        tg.sendData(JSON.stringify(data));
+                        tg.close();
                     });
                 </script>
     </body>
