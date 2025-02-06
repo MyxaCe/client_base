@@ -68,16 +68,16 @@
         <div id="main">
                 <form id="form" autocomplete="off">
                     <label for="client_sait">Сайт клиента:</label>
-                    <input type="text" id="client_sait" name="client_sait" autocomplete="off"><br>
+                    <input type="text" id="site_link" name="client_sait" autocomplete="off"><br>
 
                     <label for="date">Дата:</label>
                     <input type="date" id="date" name="date" autocomplete="off"><br>
 
                     <label for="client_name">Имя клиента:</label>
-                    <input type="text" id="client_name" name="client_name" autocomplete="off"><br>
+                    <input type="text" id="name_client" name="client_name" autocomplete="off"><br>
 
                     <label for="client_tg">Telegram клиента:</label>
-                    <input type="text" id="client_tg" name="client_tg" autocomplete="off"><br>
+                    <input type="text" id="contact_client" name="client_tg" autocomplete="off"><br>
 
                     <div id="error" style="color: red;"></div>
                     <button type="button" id="submit">Submit</button>
@@ -99,10 +99,10 @@
 
                     submit.addEventListener("click", (event) => {
                         event.preventDefault();
-                        let client_sait = document.getElementById("client_sait").value;
+                        let site_link = document.getElementById("client_sait").value;
                         let date = document.getElementById("date").value;
-                        let client_name = document.getElementById("client_name").value;
-                        let client_tg = document.getElementById("client_tg").value;
+                        let name_client = document.getElementById("client_name").value;
+                        let contact_client = document.getElementById("client_tg").value;
                         
                         client_tg = client_tg.replace(/\s+/g, '').replace(/\+/g, '');
 
@@ -146,10 +146,10 @@
 
                         let data = {
                             action: "add_client", // добавляем переменную action
-                            client_sait: client_sait,
+                            site_link: site_link,
                             date: date,
-                            client_name: client_name,
-                            client_tg: client_tg,
+                            name_client: name_client,
+                            contact_client: contact_client,
                         };
                 
                         tg.sendData(JSON.stringify(data)); // исправлено: используется правильная переменная
